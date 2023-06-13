@@ -4,7 +4,8 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import weatherPNG from "./img/weather.png";
 import { fetchWeatherAction } from "./redux/slices/weatherSlices";
-
+import { sharePage } from './actions/shareActions';
+import { TwitterShareButton, FacebookShareButton, WhatsappShareButton,  WhatsappIcon, TwitterIcon, FacebookIcon  } from 'react-share';
 //display icon https://openweathermap.org/img/wn/${icon}.png
 function App() {
 
@@ -15,12 +16,24 @@ function App() {
     dispatch(fetchWeatherAction("São paulo"));
   },[] );
 
+
 //selecet state from store
   const state = useSelector(state => state);
-  const { weather, loading, error } = state;
+  const { weather,  loading, error } = state;
   console.log(state);
 
+
+  //shared
+
+  const shared = useSelector((state) => state.shared);
+  const handleShare = () => {
+    dispatch(sharePage());
+  };
+  const shareUrl = 'http://localhost:3000';
+
+
   return (
+    
     <div>
       <section class="relative bg-cover bg-center bg-image-url min-h-screen"
        style={{
@@ -40,6 +53,7 @@ function App() {
           <p class="max-w-3xl mx-auto mb-8 lg:mb-12 text-white text-xl opacity-80">
             Descubra a temperatura atual  em todo o mundo
           </p>
+         
           <input value={city}
             onChange={e => setCity(e.target.value)}
             placeholder="Search City"
@@ -106,26 +120,37 @@ function App() {
               </div>
             </div>
           </div>
-        )}
+        )
+        }
       </section>
+      
 
       {/* Footer */}
-      <div class="bg-yellow-600 bg-opacity-90 py-4 text-center">
-        <p class="mb-4  text-yellow-200">
-          Desenvolvido por 
-          <span class="p-2 text-yellow-200">
-            <a href="https://www.linkedin.com/in/jezebel-guedes/">
-              Jezebel Guedes
-            </a>
-          </span>
-        </p>
+      <div class="flex items-center justify-center bg-yellow-600 bg-opacity-90 py-4 text-center">
+      <span class="p-2 text-yellow-200">Compartilhe:</span>
+    <TwitterShareButton url={shareUrl}>
+      <button onClick={handleShare} disabled={shareUrl} style={{ marginRight: '8px' }}>
+      <TwitterIcon size={32} round />
+      </button>
+    </TwitterShareButton>
+    <FacebookShareButton url={shareUrl}>
+      <button onClick={handleShare} disabled={shareUrl} style={{ marginRight: '8px' }}>
+      <FacebookIcon size={32} round />
+      </button>
+    </FacebookShareButton>
+    <WhatsappShareButton url={shareUrl}>
+      <button onClick={handleShare} disabled={shareUrl}>
+      <WhatsappIcon size={32} round />
+      </button>
+    </WhatsappShareButton>
+  </div>
             <path
               d="M18.7383 1.47342L18.7383 10.9304L17.5562 10.9304L17.5562 2.89788L0.834948 19.625L0.00154682 18.7916L16.7228 2.06448L9.28125 2.06448L9.28125 0.882355L18.1472 0.882355C18.4737 0.882355 18.7383 1.14697 18.7383 1.47342Z"
               fill="#1F40FF"
             ></path>
-      </div>
-    </div>
+  </div>
   );
 };
+
 
 export default App;

@@ -6,7 +6,7 @@ export const fetchWeatherAction = createAsyncThunk(
   async (payload, { rejectWithValue, getState, dispatch }) => {
         try {
             const {data} = await axios.get(
-                `http://api.openweathermap.org/data/2.5/weather?q=${payload}&brasilia,br&units=metric&lang=pt_br&appid=c26e074ca889b1612950e262908c6830`
+                `https://api.openweathermap.org/data/2.5/weather?q=${payload}&brasilia,br&units=metric&lang=pt_br&appid=${process.env.REACT_APP_OPEN_WEATHER_KEY}`
 
             );
             return data;

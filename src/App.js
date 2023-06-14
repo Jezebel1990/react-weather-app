@@ -29,7 +29,7 @@ function App() {
   const handleShare = () => {
     dispatch(sharePage());
   };
-  const shareUrl = 'http://localhost:3000';
+  const shareUrl = 'https://localhost:3000';
 
 
   return (

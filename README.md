@@ -3,8 +3,9 @@
 Welcome, this project is an app to check the current temperature of a city and share it with friends.
 
 ##  👀 Preview
-![Captura de tela 2023-06-14 013935](https://github.com/Jezebel1990/react-weather-app/assets/75287031/e656a5e4-ebab-4d90-9b1e-088eb3d126dd)
 ![Captura de tela 2023-06-14 014047](https://github.com/Jezebel1990/react-weather-app/assets/75287031/02a0bc39-80e6-4d92-8365-c20671c53733)
+![Captura de tela 2023-06-14 013935](https://github.com/Jezebel1990/react-weather-app/assets/75287031/e656a5e4-ebab-4d90-9b1e-088eb3d126dd)
+
 
 
 ## ⚙️ Technologies

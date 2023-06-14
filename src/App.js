@@ -9,11 +9,11 @@ import { TwitterShareButton, FacebookShareButton, WhatsappShareButton,  Whatsapp
 //display icon https://openweathermap.org/img/wn/${icon}.png
 function App() {
 
-  const [city, setCity] = useState('São paulo')
+  const [city, setCity] = useState('São Paulo')
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchWeatherAction("São paulo"));
+    dispatch(fetchWeatherAction("São Paulo"));
   },[] );
 
 
@@ -29,7 +29,7 @@ function App() {
   const handleShare = () => {
     dispatch(sharePage());
   };
-  const shareUrl = 'https://localhost:3000';
+  const shareUrl = 'https://react-weather-app-zeta-ten.vercel.app/';
 
 
   return (
@@ -41,7 +41,7 @@ function App() {
        }}
       >
         <img
-          class="w-100 lg:block lg:absolute top-0 left-0 pt-10"
+          class="w-50 lg:block lg:absolute top-0 left-0 pt-10"
           src={weatherPNG}
           alt="/"
         />
@@ -56,13 +56,13 @@ function App() {
          
           <input value={city}
             onChange={e => setCity(e.target.value)}
-            placeholder="Search City"
-            class="relative z-10 inline-block w-full md:w-auto mb-2  px-3 py-2 mr-4  font-medium leading-normal bg-transparent border-2 rounded-lg text-yellow-400 "
+            placeholder="Buscar cidade"
+            class="relative z-10 inline-block w-full md:w-auto mb-2  px-3 py-2 mr-4  font-medium leading-normal bg-transparent border-2 rounded-lg text-center text-indigo-900 font-bold"
           ></input>
           <button
             onClick={() => dispatch(fetchWeatherAction(city))}
             type="button"
-            className="inline-flex items-center px-3 pr-3 28 text-center py-3 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+            className="inline-flex items-center px-3 pr-3 28 text-center py-3 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 font-bold"
           >
             Buscar
           </button>
